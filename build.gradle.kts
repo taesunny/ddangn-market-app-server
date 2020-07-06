@@ -5,6 +5,14 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.9.RELEASE"
 	kotlin("jvm") version "1.3.72"
 	kotlin("plugin.spring") version "1.3.72"
+
+	id("org.jetbrains.kotlin.plugin.allopen") version "1.3.72"
+//	id("org.jetbrains.kotlin.plugin.noarg") version "1.3.72"
+	id ("org.jetbrains.kotlin.plugin.jpa") version "1.3.72"
+}
+
+allOpen {
+	annotation("javax.persistence.Entity")
 }
 
 group = "com.sunny.ddangn-market"
@@ -32,6 +40,12 @@ dependencies {
 	implementation("org.keycloak:keycloak-spring-boot-starter:10.0.2")
 	implementation("org.keycloak.bom:keycloak-adapter-bom:10.0.2")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.2.3.RELEASE")
+}
+
+allOpen {
+	annotation("javax.persistence.Entity")
+	annotation("javax.persistence.MappedSuperclass")
+	annotation("javax.persistence.Embeddable")
 }
 
 tasks.withType<Test> {
