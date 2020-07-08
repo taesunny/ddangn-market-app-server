@@ -11,7 +11,9 @@ import java.io.FileInputStream
 class FcmConfig {
     @Bean
     fun appServerFirebase():FirebaseApp {
-        val serviceAccount = FileInputStream("src/main/resources/firebase/ddangn-market-firebase-adminsdk-3mzu4-40dbafccba.json")
+//        val serviceAccount = FileInputStream("src/main/resources/firebase/ddangn-market-firebase-adminsdk-3mzu4-40dbafccba.json")
+
+        val serviceAccount = FcmConfig::class.java.getResourceAsStream("/ddangn-market-firebase-adminsdk-3mzu4-ce51961862.json")
 
         val options = FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
